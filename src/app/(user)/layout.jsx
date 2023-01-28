@@ -1,13 +1,16 @@
-import '../../../styles/globals.css';
+import '../../styles/globals.css';
 
-export default function RootLayout({ children }) {
+// app/layout.jsx
+
+import { Providers } from './providers';
+
+export default function Layout({ children }) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <body>{children}</body>
+    <html suppressHydrationWarning>
+      <head />
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

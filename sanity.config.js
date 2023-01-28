@@ -31,6 +31,14 @@ export default defineConfig({
             type: 'markdown',
           },
           {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+              source: 'title',
+            },
+          },
+          {
             name: 'coverImage',
             title: 'Cover Image',
             type: 'image',
