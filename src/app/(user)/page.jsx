@@ -1,9 +1,7 @@
-'use client';
-
-import '../../styles/globals.css';
 import { previewData } from 'next/headers';
 import PreviewSuspense from '../../components/PreviewSuspense';
 import groq from 'groq';
+import Container from '../../components/Container';
 
 export const query = groq`
 *[_type == "post"]{
@@ -24,8 +22,8 @@ export default function Home() {
   }
 
   return (
-    <>
-      <div>this is not preview mode</div>
-    </>
+    <Container>
+      <div>hello anh em</div>
+    </Container>
   );
 }

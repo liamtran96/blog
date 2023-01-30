@@ -1,10 +1,10 @@
-import '../../styles/globals.css';
+import '../globals.css';
 
 // app/layout.jsx
 
 import { Providers } from './providers';
 
-export default function Layout({ children }) {
+export default function RootLayout({ children }) {
   return (
     <html suppressHydrationWarning>
       <head />
