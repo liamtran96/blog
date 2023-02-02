@@ -1,7 +1,10 @@
-import { previewData } from 'next/headers';
-import PreviewSuspense from '../../components/PreviewSuspense';
 import groq from 'groq';
 import Container from '../../components/Container';
+import { previewData } from 'next/headers';
+import { Suspense, cache } from 'react';
+import { client } from '../../lib/sanity.client';
+
+const clientFetch = cache(client.fetch.bind(client));
 
 export const query = groq`
 *[_type == "post"]{
@@ -12,12 +15,15 @@ export const query = groq`
 } | order(date desc)
 `;
 
-export default function Home() {
+export default async function Home() {
+  const data = await clientFetch(query);
+  console.log(data);
+
   if (previewData()) {
     return (
-      <PreviewSuspense fallback="Loading...">
-        <div className="">this is preview mode</div>
-      </PreviewSuspense>
+      <Suspense fallback="Loading...">
+        <div className="">preview mode</div>
+      </Suspense>
     );
   }
 
